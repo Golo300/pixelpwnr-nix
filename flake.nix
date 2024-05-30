@@ -16,7 +16,6 @@
                 version = manifest.version;
                 cargoLock.lockFile = ./Cargo.lock;
                 src = pkgs.lib.cleanSource ./.;
-        # Weitere Argumente hier hinzufügen...
         };
 
         python-script = pkgs.python39.pkgs.buildPythonPackage rec {
@@ -24,13 +23,6 @@
           version = "1.0";
 
           src = ./scripts;
-
-           installPhase = ''
-          install -Dm755 ${./scripts/client.py} $out/bin/client.py
-        '';
-
-          buildInputs = with pkgs.python39Packages; [
-          ];
       };
  
     in{
